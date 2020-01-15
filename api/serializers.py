@@ -12,6 +12,9 @@ class UserSerializer(serializers.ModelSerializer):
 
 class PostSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
+
+    temp = serializers.SerializerMethodField()
+
     class Meta:
         model = Post
         fields = (
@@ -20,6 +23,10 @@ class PostSerializer(serializers.ModelSerializer):
             'title',
             'subtitle',
             'content',
+            'temp',
             'created_at',
         )
         read_only_fields = ('created_at',)
+
+    def get_temp(self, obj):
+        return obj.temp()

@@ -5,7 +5,8 @@ from rest_framework import permissions
 
 
 class PostView(viewsets.ModelViewSet):
-    queryset = Post.objects.all()
+
+    queryset = Post.objects.all().select_related('installer')
     serializer_class = PostSerializer
     permission_classes = (permissions.IsAuthenticated,)
 
