@@ -28,5 +28,5 @@ urlpatterns = format_suffix_patterns([
     path('posts/', post_list, name='post_list'),
     path('posts/<int:pk>/', post_detail, name='post_detail'),
     path('installs/', install_list, name='install_list'),
-    path('upload/(?P<filename>[^/]+)$', FileUploadView.as_view())
+    path('upload/', FileUploadView.as_view(), name='file-upload')
 ])
