@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from rest_framework import serializers
-from .models import Post, Installer
+from .models import Post, Installer, Image
 from django.contrib.auth.models import User
 
 
@@ -39,3 +39,9 @@ class PostSerializer(serializers.ModelSerializer):
 
     def get_temp(self, obj):
         return obj.temp()
+
+
+class FileSerialzer(serializers.ModelSerializer):
+    class Meta:
+        model = Image
+        fields = '__all__'

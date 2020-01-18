@@ -42,3 +42,8 @@ class Post(models.Model):
 
     def temp(self):
         return self.title + '-temp'
+
+
+class Image(models.Model):
+    title = models.CharField(max_length=100)
+    photo = models.ImageField(blank=True, upload_to="image/%Y/%m/%d")
