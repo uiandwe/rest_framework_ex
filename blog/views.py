@@ -7,9 +7,11 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST, HTTP_201_CREATED
 
 from .models import Post
-from .serializers import Postserializer
+from .domain.comment import Comment
+from .serializers import Postserializer, CommentSerializer
 
 
 class PostViewSet(viewsets.ModelViewSet):
@@ -41,3 +43,30 @@ class PostViewSet(viewsets.ModelViewSet):
         instance.save()
         serializer = self.get_serializer(instance)
         return Response(serializer.data)
+
+
+class CommentViewSet(viewsets.ViewSet):
+    serializer_class = CommentSerializer
+
+    def retrieve(self, request, pk=None):
+        comment = Comment(email='hare@naver.com', content='test')
+
+        comment_serializer = CommentSerializer(data=comment.__dict__)
+
+        if comment_serializer.is_valid():
+            return Response(comment_serializer.data)
+        return Response(status=HTTP_400_BAD_REQUEST)
+
+    def create(self, request):
+        # get data
+        result_data = request.data
+
+        # set class
+        comment = Comment(email=result_data['email'], content=result_data['content'], created=result_data['created'])
+
+        # set serializer
+        comment_serializer = CommentSerializer(data=comment.__dict__)
+
+        if comment_serializer.is_valid():
+            return Response(status=HTTP_201_CREATED)
+        return Response(status=HTTP_400_BAD_REQUEST)

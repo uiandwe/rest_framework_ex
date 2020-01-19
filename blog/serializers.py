@@ -8,3 +8,8 @@ class Postserializer(serializers.ModelSerializer):
         model = Post
         fields = '__all__'
 
+
+class CommentSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    content = serializers.CharField(max_length=200)
+    created = serializers.DateTimeField()
