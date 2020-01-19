@@ -2,7 +2,7 @@
 from datetime import datetime
 
 class Comment:
-    def __init__(self, email, content, created=None):
+    def __init__(self, email, content, created=None, **kwargs):
         self.email = email
         self.content = content
         self.created = created or datetime.now()

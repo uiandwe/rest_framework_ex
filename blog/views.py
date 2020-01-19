@@ -11,6 +11,7 @@ from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST, HTTP_201_CR
 
 from .models import Post
 from .domain.comment import Comment
+from .domain.user import User
 from .serializers import Postserializer, CommentSerializer
 
 
@@ -62,11 +63,21 @@ class CommentViewSet(viewsets.ViewSet):
         result_data = request.data
 
         # set class
+        user = User(email=result_data['user.email'], username=result_data['user.username'])
+
         comment = Comment(email=result_data['email'], content=result_data['content'], created=result_data['created'])
 
-        # set serializer
-        comment_serializer = CommentSerializer(data=comment.__dict__)
+        comment_data = comment.__dict__
+        comment_data['user'] = user.__dict__
 
-        if comment_serializer.is_valid():
+        # set serializer
+        comment_serializer = CommentSerializer(data=comment_data)
+        print(comment_serializer.is_valid())
+        print(comment_serializer.errors)
+
+        # raise_exception=True <- 자동으로 400 에러 리턴
+        if comment_serializer.is_valid(raise_exception=True):
+            comment = comment_serializer.save()
+            print(comment)
             return Response(status=HTTP_201_CREATED)
         return Response(status=HTTP_400_BAD_REQUEST)
