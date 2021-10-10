@@ -1,0 +1,29 @@
+[
+  {
+    "model": "blog.post",
+    "pk": 1,
+    "fields": {
+      "message": "메시지",
+      "created_at": "2020-01-16T13:46:11.946Z",
+      "updated_at": "2020-01-16T14:31:13.241Z"
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 2,
+    "fields": {
+      "message": "새메시지",
+      "created_at": "2020-01-16T13:51:54.138Z",
+      "updated_at": "2020-01-16T13:51:54.138Z"
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 3,
+    "fields": {
+      "message": "django django",
+      "created_at": "2020-01-16T14:08:24.489Z",
+      "updated_at": "2020-01-16T14:08:24.489Z"
+    }
+  }
+]
