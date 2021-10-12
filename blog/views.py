@@ -19,7 +19,7 @@ class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = Postserializer
 
-    # /blog/post/
+    # /post/
     def get_queryset(self, *args, **kwargs):
         queryset = super().get_queryset()
 
@@ -28,7 +28,7 @@ class PostViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(message__icontains=search)
         return queryset
 
-    # get  /blog/post/get_django/
+    # get  /post/get_django/
     @action(detail=False)
     def get_django(self, request):
         queryset = self.get_queryset().filter(message__icontains='django')
