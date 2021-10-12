@@ -3,7 +3,7 @@
 
 ## init load data
 ```sh
-$ python manage_local.py loaddata ./blog/init_data/blog.json
+$ python manage_local.py loaddata ./blog/fixtures/blog.json
 ```
 
 ## run test

@@ -1,0 +1,20 @@
+[
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$BWg6Oz9rCQF3bUw2uhqywe$gosHJTq0MNU3wB/cSQbiwL2DmPs04c0uU3q5HUcnwE0=",
+        "last_login": "2021-10-01T02:24:19.900",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "admin@haezoom.io",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2019-06-03T07:25:53.540",
+        "groups": [],
+        "user_permissions": []
+    }
+}
+]
