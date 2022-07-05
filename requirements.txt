@@ -4,7 +4,7 @@ attrs==19.3.0
 colorama==0.4.3
 coverage==5.0.3
 dataclasses==0.7
-Django==3.2
+Django==3.2.14
 django-pytest==0.2.0
 djangorestframework==3.11.0
 docopt==0.6.2
